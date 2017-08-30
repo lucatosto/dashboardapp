@@ -18,7 +18,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var customers = require('./routes/customers');
-var dashboard = require('./routes/dashboards');
+var dashboards = require('./routes/dashboards');
 
 // Init App
 var app = express();
@@ -77,13 +77,19 @@ app.use(function (req, res, next) {
   next();
 });
 
+var test = function(req,res,next) {
+  // do whatever logic is needed
+  res.end('Displaying information for uid ' + req.params.uid);
+}
+app.get('/test/:uid',test);
+
 
 
 app.use('/', routes);
 app.use('/users', users);
 
 app.use('/customers', customers);
-app.use('/dashboard', dashboard)
+app.get('/dashboards/:id', dashboards);
 
 
 // Set Port

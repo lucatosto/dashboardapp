@@ -63,7 +63,7 @@ router.get('/listallcustomers', function(req, res, next) {
 		if (err) {
 				res.send(err);
 		}
-		console.log('--->\n'+docs);
+		//console.log('--->\n'+docs);
     res.render('index',{
       json : docs
     });

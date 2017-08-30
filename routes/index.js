@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
+
 var Customer = require('../models/customer');
-
-
-
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
@@ -24,13 +22,19 @@ router.get('/customer', function(req, res){
 });
 
 
-router.get('/dashboard', function(req, res){
-	res.render('dashboard');
+router.param(['id'], function (req, res, next, value) {
+  console.log('DASHBOARD: ', value);
+	res.render('dashboard', {
+		json: value
+	});
+	next();
 });
 
-router.get('/test', function(req, res) {
+router.get('/dashboard/:id', function(req, res, value){
 
-	res.json({foo:'bar'});
+	var id = '3';
+
+	console.log(id);
 });
 
 module.exports = router;

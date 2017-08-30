@@ -90,16 +90,10 @@ passport.deserializeUser(function(id, done) {
 });
 
 router.post('/login',
-  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
+  passport.authenticate('local', {successRedirect:'/customers/listallcustomers', failureRedirect:'/users/login',failureFlash: true}),
   function(req, res) {
     res.redirect('/');
   });
-
-	router.post('/dashboard',
-	  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
-	  function(req, res) {
-	    res.redirect('/dashboard');
-	  });
 
 router.get('/logout', function(req, res){
 	req.logout();
