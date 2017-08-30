@@ -3,6 +3,13 @@ var router = express.Router();
 
 var Customer = require('../models/customer');
 
+
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+
+var uri = 'mongodb://localhost:27017/dashboardapp';
+var connection = mongoose.createConnection(uri);
+
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
 	res.render('index');
@@ -23,18 +30,20 @@ router.get('/customer', function(req, res){
 
 
 router.param(['id'], function (req, res, next, value) {
-  console.log('DASHBOARD: ', value);
-	res.render('dashboard', {
-		json: value
+
+	Customer.findOne({id: value}, function (err, docs) {
+		//console.log('--->\n'+docs);
+    console.log(docs);
+
+		res.render('dashboard', {
+			json: docs
+		});
 	});
 	next();
 });
 
 router.get('/dashboard/:id', function(req, res, value){
 
-	var id = '3';
-
-	console.log(id);
 });
 
 module.exports = router;
