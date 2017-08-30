@@ -11,11 +11,14 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/loginapp');
+mongoose.connect('mongodb://localhost/dashboardapp');
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+var customers = require('./routes/customers');
+var dashboard = require('./routes/dashboards');
 
 // Init App
 var app = express();
@@ -78,6 +81,9 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
+
+app.use('/customers', customers);
+app.use('/dashboard', dashboard)
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

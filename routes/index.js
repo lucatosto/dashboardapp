@@ -15,4 +15,14 @@ function ensureAuthenticated(req, res, next){
 	}
 }
 
+router.get('/customer', function(req, res){
+	res.render('customer');
+});
+
+
+router.get('/dashboard', function(req, res){
+	res.render('dashboard');
+});
+
+
 module.exports = router;
