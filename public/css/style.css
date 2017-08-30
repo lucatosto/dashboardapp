@@ -85,3 +85,8 @@ body {
 footer{
   margin-top:40px;
 }
+
+.spreadsheet{
+  width: 100%;
+  height: 500px;
+}
