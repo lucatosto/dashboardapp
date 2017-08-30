@@ -36,7 +36,7 @@ router.param(['id'], function (req, res, next, value) {
     console.log(docs);
 
 		res.render('dashboard', {
-			json: docs
+			json : docs
 		});
 	});
 	next();
