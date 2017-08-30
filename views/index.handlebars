@@ -1,10 +1,14 @@
+
 <div class="panel panel-default">
-      <div class="panel-heading">List all Customers</a></div>
+      <div class="panel-heading">List all Customers</div>
       <div class="panel-body">
         <div class="list-group">
-          <a ng-repeat="item in data" ng-href="#" class="list-group-item">
-            <div>#name {{item}} + link to dashboard</div>
-          </a>
+
+          {{#each json}}
+            <div class="list-group-item"> #nome cliente      #link dashboard</div>
+          {{/each}}
+
+
         </div>
       </div>
-    </div>
+</div>
