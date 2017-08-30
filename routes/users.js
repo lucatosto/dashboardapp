@@ -15,6 +15,10 @@ router.get('/login', function(req, res){
 	res.render('login');
 });
 
+router.get('/dashboard', function(req, res){
+	res.render('index');
+});
+
 // Register User
 router.post('/register', function(req, res){
 	var name = req.body.name;
@@ -90,6 +94,12 @@ router.post('/login',
   function(req, res) {
     res.redirect('/');
   });
+
+	router.post('/dashboard',
+	  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
+	  function(req, res) {
+	    res.redirect('/dashboard');
+	  });
 
 router.get('/logout', function(req, res){
 	req.logout();
