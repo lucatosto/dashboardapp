@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var Customer = require('../models/customer');
+
+
+
 
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
@@ -24,5 +28,9 @@ router.get('/dashboard', function(req, res){
 	res.render('dashboard');
 });
 
+router.get('/test', function(req, res) {
+
+	res.json({foo:'bar'});
+});
 
 module.exports = router;

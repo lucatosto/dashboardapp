@@ -1,25 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-
 var Customer = require('../models/customer');
 
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
 
+var uri = 'mongodb://localhost:27017/dashboardapp';
+var connection = mongoose.createConnection(uri);
 
- /*
-  * GET userlist.
-  */
- router.get('/customerlist', function(req, res) {
-     var db = req.db;
-     var collection = db.get('customerlist');
-     collection.find({},{},function(e,docs){
-         res.json(docs);
-     });
- });
-
-/*
- * POST to adduser.
- */
 router.post('/addcustomer', function(req, res) {
   	var name = req.body.name;
   	var id = req.body.id;
@@ -60,10 +49,6 @@ router.post('/addcustomer', function(req, res) {
   	}
   });
 
-
-/*
- * DELETE to deleteuser.
- */
 router.delete('/deletecustomer/:id', function(req, res) {
     var db = req.db;
     var collection = db.get('customerlist');
@@ -72,5 +57,16 @@ router.delete('/deletecustomer/:id', function(req, res) {
         res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
     });
 });
+
+router.get('/listallcustomers', function(req, res, next) {
+  Customer.find(function (err, docs) {
+		if (err) {
+				res.send(err);
+		}
+		res.json(docs);
+		console.log('--->\n'+docs);
+	});
+});
+
 
 module.exports = router;
