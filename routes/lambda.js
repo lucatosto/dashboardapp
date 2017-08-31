@@ -1,3 +1,4 @@
+
 router.param(['nomeparametro'], function (req, res, next, value) {
 
 	Customer.findOne({id: value}, function (err, docs) {
@@ -67,7 +68,7 @@ router.param(['nomeparametro'], function (req, res, next, value) {
 	next();
 });
 
-router.get('/lambda/:nomeparametro', function(req, res, value){
+router.get('/lambda/:id', function(req, res, value){
 
 });
 
