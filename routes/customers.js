@@ -14,6 +14,7 @@ router.post('/addcustomer', function(req, res) {
   	var id = req.body.id;
   	var link = req.body.link;
     var spreadsheet = req.body.spreadsheet;
+    var spreadsheetID = req.body.spreadsheetID;
     var awsbilling = req.body.awsbilling;
 
   	// Validation
@@ -21,6 +22,7 @@ router.post('/addcustomer', function(req, res) {
   	req.checkBody('id', 'ID is required').notEmpty();
   	req.checkBody('link', 'Link is required').notEmpty();
   	req.checkBody('spreadsheet', 'Link Google spreadsheet is required').notEmpty();
+    req.checkBody('spreadsheetID', 'ID Google spreadsheet is required').notEmpty();
   	req.checkBody('awsbilling', 'Link AWS Billing is required').notEmpty();
 
   	var errors = req.validationErrors();
@@ -35,6 +37,7 @@ router.post('/addcustomer', function(req, res) {
   			id:id,
   			link: link,
         spreadsheet: spreadsheet,
+        spreadsheetID: spreadsheetID,
         awsbilling: awsbilling
   		});
 

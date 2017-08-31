@@ -2,15 +2,20 @@
       <div class="panel-heading">All Customer's info</div>
       <div class="panel-body">
         <div class="list-group">
-            <div class="list-group-item"><b>Name:</b> {{json.name}} <br></div>
-            <div class="list-group-item"><b>ID:</b> {{json.id}} <br></div>
-            <div class="list-group-item"><b>Link:</b> {{json.link}} <br></div>
+            <div class="list-group-item"><b>Name:</b> {{docs.name}} <br></div>
+            <div class="list-group-item"><b>ID:</b> {{docs.id}} <br></div>
+            <div class="list-group-item"><b>Link:</b> {{docs.link}} <br></div>
     <!--
-            <div class="list-group-item"><b>Google Spreadsheet</b> {{json.spreadsheet}} </a></div>
-            <div class="list-group-item"><b>AWS Billing:</b> {{json.awsbilling}} </a></div>
+            <div class="list-group-item"><b>Google Spreadsheet</b> {{docs.spreadsheet}} </a></div>
+            <div class="list-group-item"><b>AWS Billing:</b> {{docs.awsbilling}} </a></div>
 -->
         </div>
       </div>
 </div>
 
-<iframe class="spreadsheet" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWjFZSth4lhYB-LmTj1zAOn2aDtBU2xTLXyfhWEgC_-y5pS1mwuVqkm1Q9AJZroUffwIEnIQN-w_cn/pubhtml?widget=true&amp;headers=false"></iframe>
+<div class="panel panel-default">
+      <div class="panel-heading">Google Spreadsheet </div>
+      <div class="panel-body">
+        <iframe class="spreadsheet" src="{{docs.spreadsheet}}"></iframe>
+      </div>
+</div>

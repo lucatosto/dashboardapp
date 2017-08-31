@@ -19,6 +19,7 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "google-spreadsheet-to-json": "^1.0.0",
     "mongodb": "*",
     "mongoose": "*",
     "passport": "*",

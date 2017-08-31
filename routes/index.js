@@ -10,6 +10,8 @@ var mongoose = require('mongoose');
 var uri = 'mongodb://localhost:27017/dashboardapp';
 var connection = mongoose.createConnection(uri);
 
+var gsjson = require('google-spreadsheet-to-json');
+
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
 	res.render('index');
@@ -33,10 +35,30 @@ router.param(['id'], function (req, res, next, value) {
 
 	Customer.findOne({id: value}, function (err, docs) {
 		//console.log('--->\n'+docs);
-    console.log(docs);
+    console.log(docs.spreadsheet);
+
+		gsjson({
+		//spreadsheetId: docs.spreadsheetId
+    spreadsheetId: docs.spreadsheetID,
+
+    worksheet: 1
+    // other options...
+		})
+		.then(function(result) {
+	    console.log(result.length);
+			console.log(result);
+
+			//example
+	    console.log(result[2].toBe);
+		})
+		.catch(function(err) {
+		   console.log(err.message);
+		  console.log(err.stack);
+		});
+
 
 		res.render('dashboard', {
-			json : docs
+			docs : docs
 		});
 	});
 	next();

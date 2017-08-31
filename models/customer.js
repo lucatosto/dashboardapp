@@ -16,6 +16,9 @@ var CustomerSchema = mongoose.Schema({
 	spreadsheet:{
 		type: String
 	},
+	spreadsheetID:{
+		type: String
+	},
 	awsbilling:{
 		type: String
 	}
