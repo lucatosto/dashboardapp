@@ -48,7 +48,7 @@ router.param(['id'], function (req, res, next, value) {
 	    console.log(result.length);
 			console.log(result);
 
-			//example
+			//example to remove
 	    console.log(result[2].toBe);
 		})
 		.catch(function(err) {
